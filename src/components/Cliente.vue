@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <h2>Gestión de Clientes</h2>
-    <div>
-      <input v-model="cliente.id" type="number" placeholder="ID (para actualizar/borrar)" />
-      <input v-model="cliente.cedula" type="text" placeholder="Cédula" />
-      <input v-model="cliente.nombre" type="text" placeholder="Nombre" />
-      <input v-model="cliente.apellido" type="text" placeholder="Apellido" />
-      <input v-model="cliente.razonSocial" type="text" placeholder="Razón Social" />
-      <input v-model="cliente.direccion" type="text" placeholder="Dirección" />
-      <input v-model="cliente.telefono" type="text" placeholder="Teléfono" />
-      <input v-model="cliente.email" type="email" placeholder="Correo electrónico" />
+  <div class="container">
+    <h2 class="titulo">Gestión de Clientes</h2>
+    <div class="form-cliente">
+      <input v-model="cliente.id" type="number" placeholder="ID (para actualizar/borrar)" class="input-form" />
+      <input v-model="cliente.cedula" type="text" placeholder="Cédula" class="input-form" />
+      <input v-model="cliente.nombre" type="text" placeholder="Nombre" class="input-form" />
+      <input v-model="cliente.apellido" type="text" placeholder="Apellido" class="input-form" />
+      <input v-model="cliente.razonSocial" type="text" placeholder="Razón Social" class="input-form" />
+      <input v-model="cliente.direccion" type="text" placeholder="Dirección" class="input-form" />
+      <input v-model="cliente.telefono" type="text" placeholder="Teléfono" class="input-form" />
+      <input v-model="cliente.email" type="email" placeholder="Correo electrónico" class="input-form" />
+      
+      <div class="form-actions">
+        <button @click="guardar" class="btn-guardar">Guardar</button>
+        <button @click="actualizar" class="btn-actualizar">Actualizar</button>
+        <button @click="borrar" class="btn-borrar">Borrar</button>
+      </div>
     </div>
-    <button @click="guardar">Guardar</button>
-    <button @click="actualizar">Actualizar</button>
-    <button @click="borrar">Borrar</button>
-    <div v-if="mensaje" :style="{color: mensajeColor, marginTop: '10px'}">{{ mensaje }}</div>
+    <div v-if="mensaje" class="mensaje" :style="{color: mensajeColor}">{{ mensaje }}</div>
   </div>
 </template>
 
@@ -107,58 +110,113 @@ export default {
 };
 </script>
 
-<style scpoped>
-h2 {
-  color: #0d47a1;
-  margin-bottom: 18px;
-  text-align: center;
+<style scoped>
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #f6f8fa;
 }
-div {
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.form-cliente {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
   background: #fff;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(13,71,161,0.08);
-  padding: 32px 36px;
-  margin: 32px auto;
-  max-width: 480px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.09);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1.2rem;
 }
-input {
-  display: block;
-  width: 340px;
-  margin-bottom: 18px;
-  padding: 12px 14px;
-  border: 1.5px solid #b0bec5;
+
+.input-form {
+  padding: 0.7rem 1.1rem;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 1.05rem;
-  background: #f9fafb;
-  transition: border 0.2s;
+  font-size: 1rem;
   outline: none;
+  transition: border 0.2s;
 }
-input:focus {
-  border: 2px solid #42b983;
-  background: #e3f2fd;
+
+.input-form:focus {
+  border-color: #007bff;
 }
-button {
-  background: linear-gradient(90deg, #42b983 0%, #0d47a1 100%);
-  color: #fff;
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-guardar, .btn-actualizar, .btn-borrar {
+  flex: 1;
+  padding: 0.7rem 0;
   border: none;
   border-radius: 8px;
-  padding: 12px 28px;
-  margin: 10px 8px 0 0;
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(66,185,131,0.10);
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-button:hover {
-  background: linear-gradient(90deg, #0d47a1 0%, #42b983 100%);
-  box-shadow: 0 4px 16px rgba(13,71,161,0.13);
+
+.btn-guardar {
+  background: linear-gradient(90deg, #28a745 0%, #218838 100%);
+  color: #fff;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(90deg, #218838 0%, #28a745 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.btn-actualizar {
+  background: linear-gradient(90deg, #ffc107 0%, #e0a800 100%);
+  color: #212529;
+}
+
+.btn-actualizar:hover {
+  background: linear-gradient(90deg, #e0a800 0%, #ffc107 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.btn-borrar {
+  background: linear-gradient(90deg, #dc3545 0%, #c82333 100%);
+  color: #fff;
+}
+
+.btn-borrar:hover {
+  background: linear-gradient(90deg, #c82333 0%, #dc3545 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.mensaje {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1.2rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 
-<style>
-/* Puedes agregar estilos aquí */
-</style>

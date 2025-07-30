@@ -35,7 +35,7 @@
       @input="limpiarDatosCliente"
     />
 
-    <button @click="buscarClientePorCedula" style="margin-bottom: 18px">
+    <button @click="buscarClientePorCedula" class="btn-consultar" style="margin-bottom: 18px">
       Buscar Cliente por Cédula
     </button>
 
@@ -67,7 +67,7 @@
       min="1"
       style="margin-bottom: 10px; width: 100%"
     />
-    <button @click="agregarProducto" style="width: 100%">Agregar</button>
+    <button @click="agregarProducto" class="btn-agregar" style="width: 100%">Agregar</button>
 
     <!-- Tabla de productos agregados -->
     <table
@@ -158,7 +158,7 @@
       </tbody>
     </table>
 
-    <button @click="guardar">Guardar Factura</button>
+    <button @click="guardar" class="btn-guardar">Guardar Factura</button>
   </div>
 </template>
 
@@ -459,23 +459,35 @@ input:focus {
   box-shadow: 0 2px 8px rgba(66, 185, 131, 0.1);
 }
 
-button {
-  background: linear-gradient(90deg, #42b983 0%, #0d47a1 100%);
-  color: #fff;
+button, .btn-consultar, .btn-agregar, .btn-guardar {
   border: none;
-  border-radius: 10px;
-  padding: 14px 32px;
-  margin: 18px 0 0 0;
-  font-size: 1.12rem;
-  font-weight: 700;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
-  box-shadow: 0 2px 12px rgba(66, 185, 131, 0.1);
-  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin: 18px 0 0 0;
 }
-button:hover {
-  background: linear-gradient(90deg, #0d47a1 0%, #42b983 100%);
-  box-shadow: 0 6px 24px rgba(13, 71, 161, 0.13);
+
+.btn-consultar, .btn-agregar {
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+  color: #fff;
+}
+
+.btn-consultar:hover, .btn-agregar:hover {
+  background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.btn-guardar {
+  background: linear-gradient(90deg, #28a745 0%, #218838 100%);
+  color: #fff;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(90deg, #218838 0%, #28a745 100%);
   transform: translateY(-2px) scale(1.03);
 }
 

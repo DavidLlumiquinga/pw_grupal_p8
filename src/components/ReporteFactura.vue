@@ -1,8 +1,10 @@
 <template>
-  <div class="main-content">
-    <h2>Reporte de Facturas</h2>
-    <button @click="consultar">Consultar Facturas</button>
-    <table v-if="facturas.length" border="1" style="margin-top:10px;">
+  <div class="container">
+    <h2 class="titulo">Reporte de Facturas</h2>
+    <div class="consulta-section">
+      <button @click="consultar" class="btn-consultar">Consultar Facturas</button>
+    </div>
+    <table v-if="facturas.length" class="tabla-reporte">
       <thead>
         <tr>
           <th>Número de Documento</th>
@@ -24,7 +26,7 @@
         </tr>
       </tbody>
     </table>
-    <div v-if="mensaje" :style="{color: mensajeColor, marginTop: '10px'}">{{ mensaje }}</div>
+    <div v-if="mensaje" class="mensaje" :style="{color: mensajeColor}">{{ mensaje }}</div>
   </div>
 </template>
 
@@ -56,58 +58,91 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 90vw;
-  max-width: 900px;
-  border-collapse: collapse;
-  margin: 32px auto 0 auto;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(13,71,161,0.08);
-  overflow: hidden;
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #f6f8fa;
 }
-th, td {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 1.05rem;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
-th {
-  background: linear-gradient(90deg, #0d47a1 0%, #42b983 100%);
-  color: #fff;
-  font-weight: 700;
-}
-tr:nth-child(even) {
-  background: #f3f6fd;
-}
-tr:hover {
-  background: #e3f2fd;
-}
-h2 {
-  color: #0d47a1;
-  margin-bottom: 18px;
+
+.titulo {
   text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
 }
-button {
-  background: linear-gradient(90deg, #42b983 0%, #0d47a1 100%);
+
+.consulta-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-consultar {
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 12px 28px;
-  margin: 10px 8px 0 0;
-  font-size: 1.08rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(66,185,131,0.10);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, transform 0.1s;
 }
-button:hover {
-  background: linear-gradient(90deg, #0d47a1 0%, #42b983 100%);
-  box-shadow: 0 4px 16px rgba(13,71,161,0.13);
+
+.btn-consultar:hover {
+  background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+  transform: translateY(-2px) scale(1.03);
 }
+
+.tabla-reporte {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  overflow: hidden;
+  margin: 0 auto 2rem auto;
+}
+
+.tabla-reporte th, .tabla-reporte td {
+  padding: 1rem 1.2rem;
+  text-align: center;
+  border: none;
+}
+
+.tabla-reporte th {
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tabla-reporte tr:nth-child(even) {
+  background: #f2f6fc;
+}
+
+.tabla-reporte tr:hover {
+  background: #eaf1fb;
+}
+
 .mensaje {
-  margin-top: 18px;
+  text-align: center;
   font-size: 1.1rem;
   font-weight: 500;
-  text-align: center;
+  margin-top: 1.2rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

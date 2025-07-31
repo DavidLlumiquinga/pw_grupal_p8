@@ -10,6 +10,13 @@
       <input v-model="cliente.direccion" type="text" placeholder="Dirección" class="input-form" />
       <input v-model="cliente.telefono" type="text" placeholder="Teléfono" class="input-form" />
       <input v-model="cliente.email" type="email" placeholder="Correo electrónico" class="input-form" />
+      <select v-model="cliente.genero" class="input-form">
+        <option value="">Seleccionar Género</option>
+        <option value="masculino">M</option>
+        <option value="femenino">F</option>
+      
+
+      </select>
       
       <div class="form-actions">
         <button @click="guardar" class="btn-guardar">Guardar</button>
@@ -37,6 +44,7 @@ export default {
         direccion: '',
         telefono: '',
         email: '',
+        genero: '',
       },
       mensaje: '',
       mensajeColor: 'green',
@@ -58,6 +66,7 @@ export default {
           direccion: this.cliente.direccion,
           telefono: this.cliente.telefono,
           email: this.cliente.email,
+          genero: this.cliente.genero,
         };
         await guardarFachada(clienteToBody);
         this.mensaje = 'Cliente guardado correctamente.';
@@ -82,6 +91,7 @@ export default {
           direccion: this.cliente.direccion,
           telefono: this.cliente.telefono,
           email: this.cliente.email,
+          genero: this.cliente.genero,
         };
         await actualizarFachada(this.cliente.id, clienteToBody);
         this.mensaje = 'Cliente actualizado correctamente.';

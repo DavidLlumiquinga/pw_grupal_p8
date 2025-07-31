@@ -10,6 +10,7 @@ export const guardarFachada = async (body) => {
   return await guardar(body);
 };
 
+
 // READ (get all)
 const obtenerTodos = async () => {
   const data = axios.get(`${URL_API}`).then((r) => r.data);
